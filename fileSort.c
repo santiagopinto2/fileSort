@@ -18,7 +18,7 @@ struct readNode{
 	struct readNode* next;
 };
 int main(int argc, char **argv) {
-	int flag, start=0, count=0, hasLetter=0, hasNumber=0, hasNonletter=0, errnum;
+	int flag, start=0, count=0, hasLetter=0, hasNumber=0, hasNonletter=0;
 	char buffer;
 	struct voidNode* firstVoidNode=(struct voidNode*)malloc(sizeof(struct voidNode));
 	if(firstVoidNode==NULL){
@@ -52,10 +52,10 @@ int main(int argc, char **argv) {
 	 * 
 	 * 
 	 * 
-	 * fix this if statement
 	 * 
 	 * 
 	 * 
+	 * fix this if statement 
 	 */
 	if(argv[1]!="-i"&&argv[1]!="-q"){
 		printf("Fatal Error: Sort type not properly selected\n");
@@ -173,7 +173,6 @@ int main(int argc, char **argv) {
 	
 	
 	/*
-	 * print void* for testing
 	 * 
 	 * 
 	 * 
@@ -182,8 +181,8 @@ int main(int argc, char **argv) {
 	 * 
 	 * 
 	 * 
+	 * print the voidd* linked list for testing
 	 */
-	
 	struct voidNode* tempVoidNode2=firstVoidNode;
 	while(tempVoidNode2!=NULL){
 		printf("%s\n", (char*)(tempVoidNode2->data));
@@ -193,13 +192,13 @@ int main(int argc, char **argv) {
 	
 	
 	/*
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
 	 * sorting here
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * 
 	 * 
 	 * 
