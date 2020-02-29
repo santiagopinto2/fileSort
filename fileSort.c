@@ -181,7 +181,7 @@ int main(int argc, char **argv) {
 	 * 
 	 * 
 	 * 
-	 * print the voidd* linked list for testing
+	 * this prints the void* linked list just for testing
 	 */
 	struct voidNode* tempVoidNode2=firstVoidNode;
 	while(tempVoidNode2!=NULL){
