@@ -18,7 +18,33 @@ struct readNode{
 	struct readNode* next;
 };
 
+struct voidNode* getTail(struct voidNode* front) {
+	if (front == NULL) {
+		return NULL;
+	} else if (front->next == NULL) {
+		return front;
+	}
+	struct voidNode* ptr = front;
+	while (ptr->next != NULL) {
+		ptr = ptr->next;
+	}
+	return ptr;
+}
+
+void printList(struct voidNode* front) {
+	struct voidNode* tempVoidNode2 = front;
+	if (front == NULL) {
+		printf("\n");
+		return;
+	}
+	while(tempVoidNode2!=NULL){
+		printf("%s\n", (char*)(tempVoidNode2->data));
+		tempVoidNode2=tempVoidNode2->next;
+	}
+}
+
 int compare(void* first, void* second) {
+	
 	
 	char* token = first;
 	int i = 0;
@@ -92,9 +118,9 @@ int insertionSort(void* toSort, int (*comparator) (void*, void*)) {
 		while (ptr != NULL) {
 			if (comparator(current->data, ptr->data) == 1) {
 				char* temp = (char*) malloc(sizeof(char) * 300);
-				if (temp == NULL) malloc(sizeof(char) * 200);
-				if (temp == NULL) malloc(sizeof(char) * 100);
-				if (temp == NULL) malloc(sizeof(char) * 50);
+				if (temp == NULL) temp = malloc(sizeof(char) * 200);
+				if (temp == NULL) temp = malloc(sizeof(char) * 100);
+				if (temp == NULL) temp = malloc(sizeof(char) * 50);
 				strcpy(temp, (char*)current->data);
 				strcpy((char*)(current->data), (char*)(ptr->data));
 				strcpy(ptr->data, temp);
@@ -116,29 +142,22 @@ int sortBack(struct voidNode* start, struct voidNode* end, int (*comparator) (vo
 	sortBack(start->next, end, comparator);
 	if (comparator(start->data, start->next->data) == 1) {
 		char* temp = (char*) malloc(sizeof(char) * 300);
-		if (temp == NULL) malloc(sizeof(char) * 200);
-		if (temp == NULL) malloc(sizeof(char) * 100);
-		if (temp == NULL) malloc(sizeof(char) * 50);
+		if (temp == NULL) temp = malloc(sizeof(char) * 200);
+		if (temp == NULL) temp = malloc(sizeof(char) * 100);
+		if (temp == NULL) temp = malloc(sizeof(char) * 50);
 		strcpy(temp, (char*)start->data);
 		strcpy((char*)(start->data), (char*)(start->next->data));
 		strcpy(start->next->data, temp);
 	}
 	return 0;
 }
-
+//First item always pivots
 int quickSort(void* toSort, int (*comparator) (void*, void*)) {
+
+	insertionSort(toSort, comparator);
 
 	return 0;
 
-}
-
-void printList(struct voidNode* front) {
-	struct voidNode* tempVoidNode2 = front;
-	while(tempVoidNode2!=NULL){
-		printf("%s  ", (char*)(tempVoidNode2->data));
-		tempVoidNode2=tempVoidNode2->next;
-	}
-	printf("\n");
 }
 
 int main(int argc, char **argv) {
@@ -310,15 +329,15 @@ int main(int argc, char **argv) {
 	 
 	
 	
-	struct voidNode* tempVoidNode2=firstVoidNode;
+	/*struct voidNode* tempVoidNode2=firstVoidNode;
 	while(tempVoidNode2!=NULL){
 		printf("%s\n", (char*)(tempVoidNode2->data));
 		tempVoidNode2=tempVoidNode2->next;
-	}
+	}*/
 	
 	void* thetime = firstVoidNode;
 	int (*comparator) (void*, void*) = compare;
-	insertionSort(firstVoidNode, comparator);
+	quickSort(firstVoidNode, comparator);
 	
 	printList(firstVoidNode);
 	
